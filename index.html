@@ -14,7 +14,7 @@
   html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
     font-family:"Hiragino Sans","Yu Gothic UI","Meiryo",system-ui,-apple-system,sans-serif;
     -webkit-font-smoothing:antialiased; line-height:1.75;}
-  .wrap{max-width:780px;margin:0 auto;padding:32px 20px 96px;}
+  .wrap{max-width:820px;margin:0 auto;padding:32px 20px 96px;}
   header{padding:48px 0 28px;border-bottom:1px solid var(--line);margin-bottom:32px;}
   .eyebrow{font-size:13px;letter-spacing:.12em;color:var(--accent);font-weight:700;text-transform:uppercase;}
   h1{font-size:clamp(28px,4vw,36px);margin:8px 0 4px;font-weight:800;letter-spacing:.01em;}
@@ -22,7 +22,6 @@
   .meta{font-size:13px;color:var(--muted);margin-top:16px;}
   .meta span{display:inline-block;margin-right:14px;}
 
-  /* TOC */
   .toc{background:var(--card);border:1px solid var(--line);border-radius:12px;
     padding:18px 22px;margin:8px 0 36px;box-shadow:var(--shadow);}
   .toc h2{font-size:14px;margin:0 0 10px;color:var(--muted);letter-spacing:.08em;}
@@ -31,13 +30,11 @@
   .toc a{color:var(--ink);text-decoration:none;}
   .toc a:hover{color:var(--accent);}
 
-  /* なぜTeams */
   .intro{background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px;
     padding:20px 24px;margin-bottom:40px;}
   .intro h2{margin:0 0 8px;font-size:18px;color:var(--accent);}
   .intro p{margin:0 0 6px;font-size:15px;}
 
-  /* Section */
   section{margin:48px 0;}
   section > h2{font-size:24px;font-weight:800;margin:0 0 6px;
     display:flex;align-items:center;gap:14px;}
@@ -46,7 +43,6 @@
     color:#fff;font-weight:800;font-size:18px;flex:0 0 42px;}
   section > p.sub{color:var(--muted);margin:0 0 18px;padding-left:56px;}
 
-  /* Card / Steps */
   .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
     padding:22px 24px;margin:14px 0;box-shadow:var(--shadow);}
   .card h3{margin:0 0 12px;font-size:17px;font-weight:700;}
@@ -60,25 +56,42 @@
     display:inline-flex;align-items:center;justify-content:center;}
   .steps li b{color:var(--ink);}
 
-  /* Tip / Note */
+  /* Figures */
+  figure{margin:18px 0 6px;padding:0;}
+  figure img{display:block;width:100%;max-width:760px;height:auto;
+    border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);}
+  figcaption{font-size:13px;color:var(--muted);margin-top:8px;text-align:center;}
+  .pin{display:inline-block;background:var(--accent);color:#fff;
+    font-weight:700;font-size:11px;padding:2px 7px;border-radius:6px;
+    margin-right:4px;letter-spacing:.04em;}
+
   .tip{background:#fef3c7;border-left:4px solid var(--warm);border-radius:8px;
     padding:12px 16px;margin:14px 0;font-size:14px;}
   .tip b{color:#92400e;}
   .note{background:#ecfeff;border-left:4px solid #0891b2;border-radius:8px;
     padding:12px 16px;margin:14px 0;font-size:14px;}
 
-  /* Help */
+  /* Mobile install */
+  .stores{display:flex;gap:14px;flex-wrap:wrap;margin:16px 0;}
+  .stores a{display:inline-block;}
+  .stores img{height:54px;}
+
+  .icons-row{display:flex;flex-wrap:wrap;gap:14px;margin:14px 0;}
+  .icon-card{flex:1 1 200px;background:#fff;border:1px solid var(--line);
+    border-radius:10px;padding:14px;text-align:center;}
+  .icon-card .glyph{font-size:32px;line-height:1;color:var(--accent);
+    display:block;margin:4px 0 8px;}
+  .icon-card b{display:block;margin:4px 0;font-size:14px;}
+  .icon-card span{font-size:13px;color:var(--muted);}
+
   .help{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;
     padding:22px 24px;margin:48px 0 0;text-align:center;}
   .help h2{margin:0 0 6px;color:var(--green);}
   .help p{margin:0;color:#166534;}
 
-  /* Foot */
   footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
     font-size:13px;color:var(--muted);text-align:center;}
 
-  /* Inline icons */
-  .ico{display:inline-block;vertical-align:-3px;margin-right:4px;color:var(--muted);}
   kbd{background:#f1f5f9;border:1px solid #cbd5e1;border-bottom-width:2px;
     border-radius:4px;padding:1px 6px;font-size:13px;font-family:inherit;}
   code{background:#f1f5f9;border-radius:4px;padding:1px 6px;font-size:13px;}
@@ -87,6 +100,7 @@
     .wrap{padding:20px 16px 80px;}
     header{padding:24px 0 18px;}
     section > p.sub{padding-left:0;}
+    figure img{border-radius:6px;}
   }
 </style>
 </head>
@@ -96,7 +110,7 @@
 <header>
   <div class="eyebrow">For Besterra Members</div>
   <h1>Teams Web会議マニュアル</h1>
-  <p class="lead">「開く」「招く」「入る」「便利機能」の4ステップで分かるように作りました。</p>
+  <p class="lead">画面イメージ付きで「開く」「招く」「入る」「便利機能」「スマホ導入」を解説します。</p>
   <div class="meta">
     <span>対象: 全社員（M365 Business Standard 配布済）</span>
     <span>最終更新: <time id="updated">2026-05-11</time></span>
@@ -106,8 +120,8 @@
 <div class="intro">
   <h2>はじめに — なぜTeams？</h2>
   <p>これまでベステラの Web 会議は「みんなで1つの Zoom 有料アカウントを共有」する形で運用していました。</p>
-  <p>2026年5月から、全社員に <b>M365 Business Standard</b> ライセンスを配布したので、これからは <b>自分のアカウントで Teams から自由に会議を開ける</b> 状態になっています。</p>
-  <p>このページは「Teams で会議を開く・呼ぶ・入る」を、初めての方でもそのまま手順通りに進められるように書いたガイドです。</p>
+  <p>全社員に <b>M365 Business Standard</b> ライセンスを配布したので、これからは <b>自分のアカウントで Teams から自由に会議を開ける</b> 状態になっています。</p>
+  <p>また、社内のメインのコミュニケーション基盤は当面 <b>Slack のまま</b>です。Teams は段階的に併用 → 移行していく形になります。今すぐ全部を Teams に切り替える話ではなく、Web 会議から少しずつ慣れていただければと思います。</p>
 </div>
 
 <nav class="toc">
@@ -117,6 +131,7 @@
     <li><a href="#invite">他の人を招待する</a></li>
     <li><a href="#join">会議に参加する</a></li>
     <li><a href="#tools">便利機能（画面共有・録画・チャット）</a></li>
+    <li><a href="#mobile">会社携帯に Teams アプリを入れる</a></li>
   </ol>
 </nav>
 
@@ -125,16 +140,25 @@
   <h2><span class="num">1</span>会議を開く</h2>
   <p class="sub">「今すぐ」始めるパターンと、日時を決めて「予定する」パターンの2つがあります。</p>
 
+  <figure>
+    <img src="img/01-calendar.png" alt="Teams カレンダー画面 — 右上に『今すぐ会議』『新規』ボタン">
+    <figcaption><span class="pin">画面1</span>左メニューの「カレンダー」を開くと、右上に <b>「今すぐ会議」</b> と <b>「新規」</b> のボタンがあります。</figcaption>
+  </figure>
+
   <div class="card">
     <h3><span class="tag">A</span>今すぐ会議を始める</h3>
     <ol class="steps">
-      <li>Teams アプリを開く</li>
+      <li>Teams を開く</li>
       <li>左メニューから <b>「カレンダー」</b> をクリック</li>
       <li>右上の <b>「今すぐ会議」</b> ボタンをクリック</li>
       <li>会議名を入れて <b>「会議を開始」</b></li>
       <li>マイク・カメラを確認して <b>「今すぐ参加」</b></li>
-      <li>右上の <b>「参加者を追加」</b> から人を呼ぶか、<b>「リンクをコピー」</b> して相手に送る</li>
+      <li>会議中の画面上部から <b>「リンクをコピー」</b> して相手に送る、または <b>「参加者を追加」</b> から呼ぶ</li>
     </ol>
+    <figure>
+      <img src="img/03-meet-now.png" alt="今すぐ会議の開始ダイアログ">
+      <figcaption><span class="pin">画面2</span>「今すぐ会議」を押すと開く小窓。会議名を確認して <b>「会議を開始」</b>。「共有するリンクの取得」を選ぶと、まだ会議を始めずに参加リンクだけコピーできます。</figcaption>
+    </figure>
     <div class="tip"><b>ワンポイント:</b> 思い立ったらすぐに使えるので、Slack で「ちょっと話せますか？」のあとに開くのが一番ラクです。</div>
   </div>
 
@@ -142,12 +166,16 @@
     <h3><span class="tag">B</span>日時を決めて予定する</h3>
     <ol class="steps">
       <li>左メニュー <b>「カレンダー」</b> を開く</li>
-      <li>右上の <b>「+ 新しい会議」</b> をクリック</li>
+      <li>右上の <b>「新規」</b> をクリック</li>
       <li>タイトル / 開始時刻 / 終了時刻 を入力</li>
-      <li>「参加者を追加」に呼びたい人の <b>メールアドレス</b> を入れる（社内も社外も同じ）</li>
+      <li>「必須出席者を招待します」欄に呼びたい人の <b>メールアドレス</b> を入れる（社内も社外も同じ）</li>
       <li>必要なら本文に議題を書く</li>
-      <li>右上 <b>「送信」</b> をクリック → 参加者全員にメールが届く</li>
+      <li>右上 <b>「保存」</b> をクリック → 参加者全員にメールが届く</li>
     </ol>
+    <figure>
+      <img src="img/02-new-meeting.png" alt="新しいイベント作成画面 — タイトル、出席者、日時、Teams 会議スイッチ">
+      <figcaption><span class="pin">画面3</span>「新規」を押すと開く予定作成画面。<b>「Teams 会議」のスイッチ</b> がオンになっていることを確認してください（オンならオンライン会議として送信されます）。</figcaption>
+    </figure>
     <div class="note"><b>カレンダーは Outlook と同じ:</b> Teams のカレンダーで作った予定は、Outlook の予定表にも同じものが表示されます。Outlook 側から作っても同じ会議が立ち上がります。</div>
   </div>
 </section>
@@ -160,17 +188,17 @@
   <div class="card">
     <h3><span class="tag">社内</span>ベステラ社員を呼ぶ</h3>
     <ol class="steps">
-      <li>会議予定の <b>「参加者を追加」</b> 欄に名前または <code>@besterra.co.jp</code> のメールを入れる</li>
+      <li>会議予定の <b>「必須出席者を招待します」</b> 欄に名前または <code>@besterra.co.jp</code> のメールを入れる</li>
       <li>候補が出てくるのでクリック</li>
-      <li>「送信」 → 相手の Teams カレンダーにも自動で予定が入ります</li>
+      <li>「保存」 → 相手の Teams カレンダーにも自動で予定が入ります</li>
     </ol>
   </div>
 
   <div class="card">
     <h3><span class="tag">社外</span>お取引先・お客様を呼ぶ</h3>
     <ol class="steps">
-      <li>「参加者を追加」 欄に <b>相手のメールアドレスをそのまま入力</b>（例: <code>example@partner.co.jp</code>）</li>
-      <li>「送信」 → 相手にも招待メールが届く</li>
+      <li>「必須出席者を招待します」 欄に <b>相手のメールアドレスをそのまま入力</b>（例: <code>example@partner.co.jp</code>）</li>
+      <li>「保存」 → 相手にも招待メールが届く</li>
       <li>相手はメール内の <b>「Click here to join the meeting」</b> をクリックするだけで参加できる（Teams のアカウントは無くてもOK、ブラウザでも参加可）</li>
     </ol>
     <div class="tip"><b>初対面の相手のとき:</b> 件名と本文に「ベステラ ○○ です」と日本語で一言添えておくと、相手が安心して参加できます。</div>
@@ -213,12 +241,30 @@
 <!-- 4. 便利機能 -->
 <section id="tools">
   <h2><span class="num">4</span>便利機能</h2>
-  <p class="sub">会議中によく使う3つの機能だけ覚えれば十分です。</p>
+  <p class="sub">会議中によく使う3つの機能だけ覚えれば十分です。会議画面の上部のツールバーにすべて並んでいます。</p>
+
+  <div class="icons-row">
+    <div class="icon-card">
+      <span class="glyph">◳</span>
+      <b>画面共有</b>
+      <span>自分の画面を相手に見せる</span>
+    </div>
+    <div class="icon-card">
+      <span class="glyph">●</span>
+      <b>録画</b>
+      <span>会議を録画してあとで見返す</span>
+    </div>
+    <div class="icon-card">
+      <span class="glyph">💬</span>
+      <b>チャット</b>
+      <span>文字でやり取りする</span>
+    </div>
+  </div>
 
   <div class="card">
     <h3>画面を見せる（画面共有）</h3>
     <ol class="steps">
-      <li>会議画面の上部にある <b>「共有」</b> アイコンをクリック</li>
+      <li>会議画面の上部にある <b>「共有」</b> アイコン（モニターに矢印のマーク）をクリック</li>
       <li>共有したいウィンドウ または 画面全体 を選ぶ</li>
       <li>終わるときは画面上部の <b>「共有を停止」</b></li>
     </ol>
@@ -228,11 +274,12 @@
   <div class="card">
     <h3>あとで見返す（録画）</h3>
     <ol class="steps">
-      <li>会議画面の右上 <b>「︙」</b>（その他） をクリック</li>
+      <li>会議画面の右上 <b>「︙」</b>（その他のアクション） をクリック</li>
       <li>「録画を開始」</li>
       <li>終わるときは同じ場所から「録画を停止」</li>
     </ol>
     <div class="note">録画ファイルは会議終了後、<b>OneDrive</b>（主催者の場合）または <b>SharePoint</b>（チャネル会議の場合）に自動保存されます。Teams のチャット欄からもアクセスできます。</div>
+    <p style="font-size:13px;color:var(--muted);margin:8px 0 0;">公式の画面イメージ: <a href="https://learn.microsoft.com/ja-jp/microsoftteams/cloud-recording" target="_blank" rel="noopener">Microsoft Learn — Teams クラウド レコーディング</a></p>
   </div>
 
   <div class="card">
@@ -245,13 +292,64 @@
   </div>
 </section>
 
+<!-- 5. モバイル -->
+<section id="mobile">
+  <h2><span class="num">5</span>会社携帯に Teams アプリを入れる</h2>
+  <p class="sub">スマホでも会議に出られると、外出先や移動中でも社内の打合せにそのまま参加できます。明らかに作業性が上がるので、ぜひ入れてください。</p>
+
+  <div class="stores">
+    <a href="https://apps.apple.com/jp/app/microsoft-teams/id1113153706" target="_blank" rel="noopener">
+      <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ja-jp" alt="App Store からダウンロード">
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.microsoft.teams&hl=ja" target="_blank" rel="noopener">
+      <img src="https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png" alt="Google Play で手に入れよう">
+    </a>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag">iPhone</span>App Store から入れる</h3>
+    <ol class="steps">
+      <li>ホーム画面の <b>App Store</b>（青い「A」のアイコン）を開く</li>
+      <li>下のメニューから <b>「検索」</b> をタップ</li>
+      <li>検索欄に <b><code>Microsoft Teams</code></b> と入力</li>
+      <li>「Microsoft Teams」（紫のロゴ）の <b>「入手」</b> をタップ → Face ID / 指紋認証でインストール開始</li>
+      <li>インストール完了後、Teams アプリを開く</li>
+      <li>サインインの画面で、会社のメールアドレス（<b><code>あなたの名前@besterra.onmicrosoft.com</code></b>）と <b>パスワード</b> を入れる</li>
+      <li>通知の許可を確認して完了</li>
+    </ol>
+    <div class="tip"><b>サインインに使う ID / パスワードがわからない場合は</b> 長谷部までお声がけください。</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="tag">Android</span>Google Play から入れる</h3>
+    <ol class="steps">
+      <li>ホーム画面の <b>Google Play ストア</b>（カラフルな三角のアイコン）を開く</li>
+      <li>上の検索欄に <b><code>Microsoft Teams</code></b> と入力</li>
+      <li>「Microsoft Teams」（紫のロゴ）を選んで <b>「インストール」</b> をタップ</li>
+      <li>インストール完了後、Teams アプリを開く</li>
+      <li>サインインの画面で、会社のメールアドレス（<b><code>あなたの名前@besterra.onmicrosoft.com</code></b>）と <b>パスワード</b> を入れる</li>
+      <li>通知の許可を確認して完了</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>スマホで会議に出るとき</h3>
+    <ol class="steps">
+      <li>招待メールやチャットの <b>「会議に参加」</b> リンクをタップ</li>
+      <li>Teams アプリが自動で開く → <b>「今すぐ参加」</b> をタップ</li>
+      <li>マイク・カメラの許可を求められたら <b>「許可」</b></li>
+    </ol>
+    <div class="note">スマホでも、画面共有・チャット・参加者一覧などほぼ全部の操作ができます。画面下のメニューバーから呼び出せます。</div>
+  </div>
+</section>
+
 <div class="help">
   <h2>うまくいかないとき</h2>
   <p>長谷部までお気軽に Teams でご連絡ください。一緒に画面を見ながら解決します。</p>
 </div>
 
 <footer>
-  ベステラ株式会社 脱炭素事業推進部 / Microsoft Teams Web会議マニュアル<br>
+  ベステラ株式会社 / Microsoft Teams Web会議マニュアル<br>
   ご意見・改善要望は Teams で長谷部まで
 </footer>
 
