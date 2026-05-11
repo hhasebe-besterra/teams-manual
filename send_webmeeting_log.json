@@ -1,0 +1,160 @@
+[
+  {
+    "upn": "a.itabisashi@besterra.onmicrosoft.com",
+    "name": "板庇 明日加",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_42d36ad9-e32d-450a-b4bc-fff5db792282@unq.gbl.spaces",
+    "message_id": "1778476994293"
+  },
+  {
+    "upn": "a.maehara@besterra.onmicrosoft.com",
+    "name": "前原 昭仁",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_857fe67d-ee1e-452e-9418-747b4969e0d5@unq.gbl.spaces",
+    "message_id": "1778476995709"
+  },
+  {
+    "upn": "a.togo@besterra.onmicrosoft.com",
+    "name": "藤吾 歩",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_6045eaf7-64f1-45ff-994b-c37b0ee02666@unq.gbl.spaces",
+    "message_id": "1778476997491"
+  },
+  {
+    "upn": "araki@besterra.onmicrosoft.com",
+    "name": "荒木 伸治",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_816991cf-69a7-4172-a284-3c410209d01d@unq.gbl.spaces",
+    "message_id": "1778476998964"
+  },
+  {
+    "upn": "h.hasebe@besterra.onmicrosoft.com",
+    "skip_self": true
+  },
+  {
+    "upn": "h.miyauchi@besterra.onmicrosoft.com",
+    "name": "宮内 秀樹",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_03679ed6-99c7-4ab8-a0cc-50c591db3607@unq.gbl.spaces",
+    "message_id": "1778477000880"
+  },
+  {
+    "upn": "h.murano@besterra.onmicrosoft.com",
+    "name": "村野 宏樹",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_1d9f9da8-14c0-426f-a63c-7a8326cffdc6@unq.gbl.spaces",
+    "message_id": "1778477002850"
+  },
+  {
+    "upn": "k.kasai@besterra.onmicrosoft.com",
+    "name": "葛西 健太郎",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_90e7b89f-942f-433f-888c-7d58d299e25d@unq.gbl.spaces",
+    "message_id": "1778477004640"
+  },
+  {
+    "upn": "k.kido@besterra.onmicrosoft.com",
+    "name": "木戸 健太郎",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_49745696-266e-4f79-b584-ab31f1af83c7@unq.gbl.spaces",
+    "message_id": "1778477006497"
+  },
+  {
+    "upn": "k.sorida@besterra.onmicrosoft.com",
+    "name": "曽利田 光紀",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_8f430081-d814-4237-a42b-5478c36b3ad5@unq.gbl.spaces",
+    "message_id": "1778477008129"
+  },
+  {
+    "upn": "kimura@besterra.onmicrosoft.com",
+    "name": "木村 勇",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_27b0e860-1027-45f8-b254-dd38f9f0b51a@unq.gbl.spaces",
+    "message_id": "1778477009856"
+  },
+  {
+    "upn": "l.zhang@besterra.onmicrosoft.com",
+    "name": "チョウ ランキ",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_0ab8d79f-8091-4558-a463-f7305f592422@unq.gbl.spaces",
+    "message_id": "1778477011809"
+  },
+  {
+    "upn": "m.sakamoto@besterra.onmicrosoft.com",
+    "name": "坂本 匡司",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_245ff7ab-b263-47dd-be69-f0a2cfddc903@unq.gbl.spaces",
+    "message_id": "1778477013772"
+  },
+  {
+    "upn": "m.takeuchi@besterra.onmicrosoft.com",
+    "name": "竹内 真菜",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_7156de77-8e7a-45c6-a330-e8aeab8220b0@unq.gbl.spaces",
+    "message_id": "1778477015962"
+  },
+  {
+    "upn": "m.ushiyama@besterra.onmicrosoft.com",
+    "name": "牛山 美月",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_619d62c9-4619-44ea-934a-1b0bae42f600@unq.gbl.spaces",
+    "message_id": "1778477017817"
+  },
+  {
+    "upn": "r.ikegami@besterra.onmicrosoft.com",
+    "name": "池上 凜佳",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_9fa940fc-57e2-4bff-abf5-46750043d3bf@unq.gbl.spaces",
+    "message_id": "1778477019407"
+  },
+  {
+    "upn": "s.ishii@besterra.onmicrosoft.com",
+    "name": "石井 すずな",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_be2ace9e-b79a-4a1c-9d86-5149e1aec324@unq.gbl.spaces",
+    "message_id": "1778477021123"
+  },
+  {
+    "upn": "s.matsuoka@besterra.onmicrosoft.com",
+    "name": "松岡 聡",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_227aeb09-551e-4dc4-b0ff-1293368bd227@unq.gbl.spaces",
+    "message_id": "1778477022783"
+  },
+  {
+    "upn": "t.ishikawa@besterra.onmicrosoft.com",
+    "name": "石川 達也",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_ca97a5b5-2ff9-4899-87c0-eb730e0075e3@unq.gbl.spaces",
+    "message_id": "1778477024777"
+  },
+  {
+    "upn": "t.shimizu@besterra.onmicrosoft.com",
+    "name": "清水 俊樹",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_f0fdd784-6b60-4585-b070-d8e006b22506@unq.gbl.spaces",
+    "message_id": "1778477026485"
+  },
+  {
+    "upn": "y.mizuno@besterra.onmicrosoft.com",
+    "name": "水野 陽介",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_d9870016-aa72-46e9-bf6b-f293c00fc23a@unq.gbl.spaces",
+    "message_id": "1778477028316"
+  },
+  {
+    "upn": "y.ohashi@besterra.onmicrosoft.com",
+    "name": "大橋 侑奈",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_99e96d90-8008-42a0-90f2-1d8700278e56@unq.gbl.spaces",
+    "message_id": "1778477030148"
+  },
+  {
+    "upn": "yhonda@besterra.onmicrosoft.com",
+    "name": "本田 豊",
+    "ok": true,
+    "chat_id": "19:01112a6b-e857-41ec-945b-aea34da57e43_63557e31-a261-4fbb-a94d-9a2beefa4993@unq.gbl.spaces",
+    "message_id": "1778477032026"
+  }
+]
