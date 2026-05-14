@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HerozAsk 説明会 — Teams 参加ガイド</title>
+<style>
+  :root{
+    --bg:#fafbfc; --ink:#0f172a; --muted:#64748b; --card:#ffffff;
+    --line:#e2e8f0; --accent:#4f46e5; --teams:#4b53bc;
+    --warm:#f59e0b; --green:#16a34a; --red:#dc2626;
+    --shadow:0 1px 2px rgba(15,23,42,.04), 0 8px 24px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:"Hiragino Sans","Yu Gothic UI","Meiryo",system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.75;}
+  .wrap{max-width:820px;margin:0 auto;padding:32px 20px 96px;}
+  header{padding:48px 0 28px;border-bottom:1px solid var(--line);margin-bottom:32px;}
+  .eyebrow{font-size:13px;letter-spacing:.12em;color:var(--accent);font-weight:700;text-transform:uppercase;}
+  h1{font-size:clamp(26px,4vw,34px);margin:8px 0 4px;font-weight:800;letter-spacing:.01em;}
+  .lead{font-size:16px;color:var(--muted);margin:8px 0 0;}
+
+  .hero{background:linear-gradient(135deg,#eef2ff 0%,#e0e7ff 100%);
+    border:1px solid #c7d2fe;border-radius:14px;
+    padding:22px 26px;margin:18px 0 36px;}
+  .hero p{margin:0;font-size:15px;color:#1e1b4b;}
+  .hero b{color:#312e81;}
+
+  /* meeting buttons */
+  .meetings{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px;}
+  @media (max-width:540px){ .meetings{grid-template-columns:1fr;} }
+  .meet{background:#fff;border:2px solid var(--teams);border-radius:14px;
+    padding:18px 20px;text-decoration:none;color:var(--ink);
+    box-shadow:var(--shadow);transition:transform .12s, box-shadow .12s;}
+  .meet:hover{transform:translateY(-2px);
+    box-shadow:0 4px 12px rgba(75,83,188,.18),0 12px 32px rgba(15,23,42,.10);}
+  .meet .when{font-size:12px;color:var(--muted);letter-spacing:.08em;font-weight:700;}
+  .meet .date{font-size:22px;font-weight:800;margin:4px 0 2px;color:var(--teams);}
+  .meet .time{font-size:14px;color:var(--ink);margin-bottom:8px;}
+  .meet .cta{display:inline-block;background:var(--teams);color:#fff;
+    font-size:13px;font-weight:700;padding:7px 14px;border-radius:8px;
+    margin-top:6px;}
+
+  section{margin:48px 0;}
+  section > h2{font-size:22px;font-weight:800;margin:0 0 6px;
+    display:flex;align-items:center;gap:14px;}
+  .num{display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:50%;background:var(--accent);
+    color:#fff;font-weight:800;font-size:16px;flex:0 0 38px;}
+  section > p.sub{color:var(--muted);margin:0 0 18px;padding-left:52px;}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:20px 22px;margin:14px 0;box-shadow:var(--shadow);}
+  .card h3{margin:0 0 12px;font-size:17px;font-weight:700;}
+  .steps{margin:0;padding:0;list-style:none;counter-reset:s;}
+  .steps li{position:relative;padding:8px 0 8px 40px;counter-increment:s;}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:8px;
+    width:26px;height:26px;background:#fff;border:2px solid var(--accent);
+    color:var(--accent);border-radius:50%;font-weight:700;font-size:13px;
+    display:inline-flex;align-items:center;justify-content:center;}
+  .steps li b{color:var(--ink);}
+
+  .tip{background:#fef3c7;border-left:4px solid var(--warm);border-radius:8px;
+    padding:12px 16px;margin:14px 0;font-size:14px;}
+  .tip b{color:#92400e;}
+  .note{background:#ecfeff;border-left:4px solid #0891b2;border-radius:8px;
+    padding:12px 16px;margin:14px 0;font-size:14px;}
+  .warn{background:#fef2f2;border-left:4px solid var(--red);border-radius:8px;
+    padding:12px 16px;margin:14px 0;font-size:14px;}
+  .warn b{color:#991b1b;}
+
+  /* mock screen */
+  .mock{background:#fff;border:1px solid var(--line);border-radius:10px;
+    padding:18px;margin:14px 0;}
+  .mock-title{font-size:12px;color:var(--muted);text-align:center;
+    margin-bottom:14px;letter-spacing:.06em;}
+  .mock-row{display:flex;flex-direction:column;align-items:center;gap:14px;}
+  .mock-input{width:100%;max-width:360px;border:2px solid var(--line);
+    border-radius:8px;padding:12px 14px;font-size:14px;color:var(--muted);
+    background:#f8fafc;}
+  .mock-input.filled{color:var(--ink);border-color:var(--teams);background:#fff;font-weight:600;}
+  .mock-btn{background:var(--teams);color:#fff;border-radius:8px;padding:12px 32px;
+    font-weight:700;font-size:14px;display:inline-block;}
+  .mock-controls{display:flex;gap:12px;margin-top:8px;}
+  .mock-pill{display:inline-flex;align-items:center;gap:6px;
+    background:#f1f5f9;border:1px solid var(--line);
+    border-radius:999px;padding:6px 14px;font-size:13px;}
+  .mock-pill .ico{display:inline-block;width:14px;height:14px;
+    background:var(--muted);border-radius:3px;}
+  .mock-pill.off .ico{background:var(--red);}
+  .mock-pill.on .ico{background:var(--green);}
+
+  .platform-tabs{display:flex;gap:10px;margin:10px 0 14px;flex-wrap:wrap;}
+  .platform-tabs span{display:inline-block;background:#eef2ff;color:var(--accent);
+    font-size:12px;padding:4px 10px;border-radius:6px;font-weight:700;}
+
+  .help{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;
+    padding:22px 24px;margin:48px 0 0;text-align:center;}
+  .help h2{margin:0 0 6px;color:var(--green);font-size:18px;}
+  .help p{margin:0;color:#166534;font-size:14px;}
+
+  .related{background:#f8fafc;border:1px solid var(--line);border-radius:12px;
+    padding:20px 24px;margin:24px 0;}
+  .related h2{font-size:15px;margin:0 0 10px;color:var(--muted);letter-spacing:.06em;}
+  .related a{display:block;color:var(--accent);text-decoration:none;
+    padding:6px 0;font-size:14px;}
+  .related a:hover{text-decoration:underline;}
+
+  footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:13px;color:var(--muted);text-align:center;}
+
+  kbd{background:#f1f5f9;border:1px solid #cbd5e1;border-bottom-width:2px;
+    border-radius:4px;padding:1px 6px;font-size:13px;font-family:inherit;}
+  code{background:#f1f5f9;border-radius:4px;padding:1px 6px;font-size:13px;}
+
+  @media (max-width:540px){
+    .wrap{padding:20px 16px 80px;}
+    header{padding:24px 0 18px;}
+    section > p.sub{padding-left:0;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">HerozAsk 説明会 / For Besterra Members</div>
+  <h1>Teams 会議 参加ガイド</h1>
+  <p class="lead">Zoom しか使ったことが無い方向けに、説明会への参加方法を画面イメージ付きで解説します。</p>
+</header>
+
+<div class="hero">
+  <p><b>結論：メール本文の Teams URL をクリックするだけです。</b></p>
+  <p style="margin-top:6px;">Teams のアプリを入れていなくても、<b>ブラウザ（Edge / Chrome）でそのまま参加</b> できます。<br>
+  Microsoft アカウントも不要です。お名前を入れるだけでOK。</p>
+</div>
+
+<!-- 説明会日時ボタン -->
+<section style="margin-top:24px;">
+  <h2><span class="num">1</span>説明会の日時 — クリックで入室</h2>
+  <p class="sub">同じ内容を2回開催します。どちらか参加しやすい回にお入りください。</p>
+
+  <div class="meetings">
+    <a class="meet" href="https://teams.microsoft.com/meet/49172927775012?p=jIBZ3hwa6ewNfVuXMZ" target="_blank" rel="noopener">
+      <div class="when">回① / MAY 19 MON</div>
+      <div class="date">5月19日（月）</div>
+      <div class="time">16:00 〜 17:00</div>
+      <span class="cta">この回に参加する →</span>
+    </a>
+    <a class="meet" href="https://teams.microsoft.com/meet/4290190730912?p=TGxuqduGG32jzr1HRB" target="_blank" rel="noopener">
+      <div class="when">回② / MAY 27 TUE</div>
+      <div class="date">5月27日（火）</div>
+      <div class="time">16:00 〜 17:00</div>
+      <span class="cta">この回に参加する →</span>
+    </a>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-top:14px;">
+    ※ スマホ／会社携帯から開くと Teams アプリが自動で起動します（アプリが無い場合はブラウザで参加）。
+  </p>
+</section>
+
+<!-- 2. PC（ブラウザ）参加 -->
+<section>
+  <h2><span class="num">2</span>パソコンから参加する（ブラウザでOK）</h2>
+  <p class="sub">Teams アプリのインストールは不要です。Edge / Chrome でそのまま入れます。</p>
+
+  <div class="platform-tabs"><span>PC / ブラウザ</span><span>所要時間：30秒</span></div>
+
+  <div class="card">
+    <h3>4ステップで入室</h3>
+    <ol class="steps">
+      <li>上の <b>「この回に参加する →」</b> ボタン、またはメール本文の <b>Teams URL</b> をクリック</li>
+      <li>ブラウザの画面で <b>「このブラウザーで続ける」</b> をクリック<br>
+        <span style="font-size:13px;color:var(--muted);">（アプリのダウンロードを促されますが、無視してブラウザのままでOKです）</span></li>
+      <li>名前の入力欄に <b>「ベステラ ○○（氏名）」</b> を入力</li>
+      <li>マイク・カメラを <b>OFF</b> にした状態で <b>「今すぐ参加」</b> をクリック</li>
+    </ol>
+
+    <div class="mock">
+      <div class="mock-title">画面イメージ：参加前の確認画面</div>
+      <div class="mock-row">
+        <div class="mock-input filled">ベステラ 長谷部</div>
+        <div class="mock-controls">
+          <span class="mock-pill off"><span class="ico"></span>マイク OFF</span>
+          <span class="mock-pill off"><span class="ico"></span>カメラ OFF</span>
+        </div>
+        <span class="mock-btn">今すぐ参加</span>
+      </div>
+    </div>
+
+    <div class="tip"><b>マイク・カメラは最初はOFFで:</b> 入室後に必要なタイミングでONにすればOKです。説明会では基本的に視聴のみで参加頂ければ大丈夫です。</div>
+  </div>
+
+  <div class="card">
+    <h3>「ロビーで待機しています」と出たとき</h3>
+    <p>主催者が承認するまで少しお待ちください。1〜2分以内に入室できます。</p>
+    <div class="note">そのまま画面を閉じずにお待ち頂ければ、自動で会議画面に切り替わります。</div>
+  </div>
+</section>
+
+<!-- 3. スマホ -->
+<section>
+  <h2><span class="num">3</span>スマホ・会社携帯から参加する</h2>
+  <p class="sub">移動中・外出先からの参加もOK。Teams アプリ未インストールでもブラウザで入れます。</p>
+
+  <div class="platform-tabs"><span>iPhone</span><span>Android</span><span>会社携帯</span></div>
+
+  <div class="card">
+    <h3>5ステップで入室</h3>
+    <ol class="steps">
+      <li>メール本文の <b>Teams URL</b> をタップ</li>
+      <li>初回は <b>「Teams を入手する」</b> または <b>「Webで参加」</b> のどちらか — どちらでもOKです</li>
+      <li><b>「Webで参加」</b> を選んだ場合は、ブラウザ（Safari / Chrome）で会議画面が開きます</li>
+      <li>名前の入力欄に <b>「ベステラ ○○（氏名）」</b> を入力</li>
+      <li>マイク・カメラを <b>OFF</b> にして <b>「会議に参加」</b> をタップ</li>
+    </ol>
+    <div class="tip"><b>マイク・カメラのアクセス許可:</b> 初回はスマホから「許可しますか？」と聞かれます。<b>音声を聞くだけならどちらも「許可しない」でOK</b>。喋るときだけ「マイクを許可」してください。</div>
+  </div>
+</section>
+
+<!-- 4. トラブル -->
+<section>
+  <h2><span class="num">4</span>うまく入れないとき</h2>
+  <p class="sub">よくあるつまずきポイントと対処です。</p>
+
+  <div class="card">
+    <h3>「Teams アプリをインストールしてください」と表示される</h3>
+    <p>画面のどこかに必ず <b>「このブラウザーで続ける」</b> または <b>「Webで参加」</b> のボタンがあります。そちらをクリックしてください。インストールは <b>不要</b> です。</p>
+  </div>
+
+  <div class="card">
+    <h3>音が聞こえない / マイクが入らない</h3>
+    <ol class="steps">
+      <li>PC の右下のスピーカーアイコンで音量がゼロになっていないか確認</li>
+      <li>会議画面の上部の <b>マイクアイコン</b> に斜線 <kbd>/</kbd> が入っていれば OFF 状態 → クリックで ON</li>
+      <li>ヘッドセット / イヤホンを差している場合は、会議画面の <b>「︙」（その他）→ デバイスの設定</b> で正しい機器を選ぶ</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>会議から退出するには</h3>
+    <p>画面右上の <b>赤い「退出」ボタン</b> をクリックすれば終了します。途中退室も自由です。</p>
+  </div>
+
+  <div class="warn"><b>それでも入れない場合：</b> 長谷部までお気軽に Teams / Slack / メール / お電話 でご連絡ください。<br>
+  直通：080-5462-0785</div>
+</section>
+
+<!-- 関連 -->
+<div class="related">
+  <h2>関連リンク</h2>
+  <a href="https://hhasebe-besterra.github.io/teams-manual/" target="_blank" rel="noopener">→ Teams Web会議マニュアル（本編 — 会議を開く・招待する・便利機能）</a>
+  <a href="https://hhasebe-besterra.github.io/teams-manual/start/" target="_blank" rel="noopener">→ Teams はじめてガイド（インストール〜サインイン）</a>
+  <a href="https://sites.google.com/heroz.co.jp/herozask-case/%E5%B0%8E%E5%85%A5%E4%BA%8B%E4%BE%8B" target="_blank" rel="noopener">→ HEROZ ASK 導入事例（HEROZ社公式）</a>
+  <a href="https://forms.cloud.microsoft/r/1uMZaP5ujp" target="_blank" rel="noopener">→ HerozAsk 利用申請フォーム</a>
+</div>
+
+<div class="help">
+  <h2>当日お会いできるのを楽しみにしています</h2>
+  <p>うまくいかないときは遠慮なく長谷部までお声がけください。</p>
+</div>
+
+<footer>
+  ベステラ株式会社 / HerozAsk 説明会 Teams 参加ガイド<br>
+  最終更新: 2026-05-14
+</footer>
+
+</div>
+</body>
+</html>
