@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ベステラ Teams チャットの使い方マニュアル</title>
+<style>
+  :root{
+    --bg:#fafbfc; --ink:#0f172a; --muted:#64748b; --card:#ffffff;
+    --line:#e2e8f0; --accent:#4f46e5; --warm:#f59e0b; --green:#16a34a;
+    --teams:#5059c9; --teams-2:#7378e8; --teams-soft:#e8ebfa;
+    --shadow:0 1px 2px rgba(15,23,42,.04), 0 8px 24px rgba(15,23,42,.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:"Hiragino Sans","Yu Gothic UI","Meiryo",system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.75;}
+  .wrap{max-width:820px;margin:0 auto;padding:32px 20px 96px;}
+  header{padding:48px 0 28px;border-bottom:1px solid var(--line);margin-bottom:32px;}
+  .eyebrow{font-size:13px;letter-spacing:.12em;color:var(--teams);font-weight:700;text-transform:uppercase;}
+  h1{font-size:clamp(28px,4vw,36px);margin:8px 0 4px;font-weight:800;letter-spacing:.01em;}
+  .lead{font-size:16px;color:var(--muted);margin:8px 0 0;}
+  .meta{font-size:13px;color:var(--muted);margin-top:16px;}
+
+  .toc{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:18px 22px;margin:8px 0 36px;box-shadow:var(--shadow);}
+  .toc h2{font-size:14px;margin:0 0 10px;color:var(--muted);letter-spacing:.08em;}
+  .toc ol{margin:0;padding-left:22px;}
+  .toc li{margin:4px 0;}
+  .toc a{color:var(--ink);text-decoration:none;}
+  .toc a:hover{color:var(--teams);}
+
+  .intro{background:#eef2ff;border:1px solid #c7d2fe;border-radius:12px;
+    padding:20px 24px;margin-bottom:40px;}
+  .intro h2{margin:0 0 8px;font-size:18px;color:var(--teams);}
+  .intro p{margin:0 0 6px;font-size:15px;}
+
+  section{margin:48px 0;}
+  section > h2{font-size:24px;font-weight:800;margin:0 0 6px;
+    display:flex;align-items:center;gap:14px;}
+  .num{display:inline-flex;align-items:center;justify-content:center;
+    width:42px;height:42px;border-radius:50%;background:var(--teams);
+    color:#fff;font-weight:800;font-size:18px;flex:0 0 42px;}
+  section > p.sub{color:var(--muted);margin:0 0 18px;padding-left:56px;}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin:14px 0;box-shadow:var(--shadow);}
+  .card h3{margin:0 0 12px;font-size:17px;font-weight:700;}
+  .steps{margin:0;padding:0;list-style:none;counter-reset:s;}
+  .steps li{position:relative;padding:8px 0 8px 36px;counter-increment:s;}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:8px;
+    width:24px;height:24px;background:#fff;border:2px solid var(--teams);
+    color:var(--teams);border-radius:50%;font-weight:700;font-size:13px;
+    display:inline-flex;align-items:center;justify-content:center;}
+  .steps li b{color:var(--ink);}
+
+  figure{margin:18px 0 6px;padding:0;}
+  figcaption{font-size:13px;color:var(--muted);margin-top:10px;text-align:center;}
+  .pin{display:inline-block;background:var(--teams);color:#fff;
+    font-weight:700;font-size:11px;padding:2px 7px;border-radius:6px;
+    margin-right:4px;letter-spacing:.04em;}
+
+  .tip{background:#fef3c7;border-left:4px solid var(--warm);border-radius:8px;
+    padding:12px 16px;margin:14px 0;font-size:14px;}
+  .tip b{color:#92400e;}
+  .note{background:#ecfeff;border-left:4px solid #0891b2;border-radius:8px;
+    padding:12px 16px;margin:14px 0;font-size:14px;}
+
+  .cta{display:block;background:linear-gradient(135deg, #4f46e5, #7c3aed);
+    color:#fff;border-radius:16px;padding:24px 28px;margin:24px 0;
+    text-decoration:none;box-shadow:0 8px 24px rgba(79,70,229,.25);
+    transition:transform .12s;}
+  .cta:hover{transform:translateY(-2px);}
+  .cta b{display:block;font-size:18px;margin-bottom:4px;}
+  .cta span{font-size:14px;opacity:.9;}
+  .cta::after{content:" →";font-size:18px;}
+
+  .help{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;
+    padding:22px 24px;margin:48px 0 0;text-align:center;}
+  .help h2{margin:0 0 6px;color:var(--green);}
+  .help p{margin:0;color:#166534;}
+
+  footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:13px;color:var(--muted);text-align:center;}
+
+  kbd{background:#f1f5f9;border:1px solid #cbd5e1;border-bottom-width:2px;
+    border-radius:4px;padding:1px 6px;font-size:13px;font-family:inherit;}
+  code{background:#f1f5f9;border-radius:4px;padding:1px 6px;font-size:13px;}
+
+  /* ===== Teams 画面モックUI ===== */
+  .mock{margin:0 auto;max-width:760px;border:1px solid #d6d8e5;border-radius:12px;
+    overflow:hidden;box-shadow:var(--shadow);background:#fff;}
+  .mock-bar{height:34px;background:#4b4f8a;display:flex;align-items:center;
+    gap:7px;padding:0 14px;}
+  .mock-bar i{width:11px;height:11px;border-radius:50%;background:#ffffff55;display:block;}
+  .mock-bar .title{margin-left:12px;color:#fff;font-size:12px;opacity:.9;}
+  .app{display:flex;min-height:330px;font-size:13px;}
+  /* left rail */
+  .rail{flex:0 0 64px;background:#ebebf4;display:flex;flex-direction:column;
+    align-items:center;padding:10px 0;gap:4px;}
+  .rail .ic{width:48px;height:46px;border-radius:8px;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;color:#52566b;gap:2px;font-size:10px;}
+  .rail .ic .g{font-size:18px;line-height:1;}
+  .rail .ic.on{background:#fff;color:var(--teams);box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:700;}
+  .rail .ic.on::before{content:"";position:absolute;}
+  .rail .ic.sel{position:relative;}
+  .rail .ic.sel::after{content:"";position:absolute;left:6px;width:3px;height:26px;
+    background:var(--teams);border-radius:3px;transform:translateX(-13px);}
+  /* chat list column */
+  .list{flex:0 0 215px;border-right:1px solid #ececf2;background:#fff;display:flex;flex-direction:column;}
+  .list .lh{padding:12px 14px 8px;font-weight:800;font-size:15px;display:flex;
+    justify-content:space-between;align-items:center;}
+  .list .lh .new{width:26px;height:26px;border-radius:6px;background:var(--teams-soft);
+    color:var(--teams);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;}
+  .list .search{margin:0 12px 8px;height:28px;border-radius:6px;background:#f3f3f8;
+    display:flex;align-items:center;padding:0 10px;color:#9aa;font-size:12px;gap:6px;}
+  .li{display:flex;gap:9px;padding:9px 12px;align-items:center;cursor:default;}
+  .li.sel{background:#eef0fb;}
+  .li .nm{font-weight:600;color:#222;font-size:13px;}
+  .li .pv{color:#888;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px;}
+  .av{flex:0 0 32px;width:32px;height:32px;border-radius:50%;display:flex;
+    align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;}
+  .av.sm{flex:0 0 28px;width:28px;height:28px;font-size:11px;}
+  .a1{background:#6b6fd6}.a2{background:#2e8b8b}.a3{background:#c2557a}
+  .a4{background:#b06f2e}.a5{background:#4b53bc}.a6{background:#5a7d3a}
+  /* conversation pane */
+  .conv{flex:1;display:flex;flex-direction:column;background:#fff;min-width:0;}
+  .ch{padding:10px 16px;border-bottom:1px solid #ececf2;display:flex;align-items:center;gap:10px;}
+  .ch .nm{font-weight:700;}
+  .ch .act{margin-left:auto;display:flex;gap:14px;color:#666;font-size:15px;}
+  .body{flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:12px;background:#fff;}
+  .row{display:flex;gap:9px;align-items:flex-end;max-width:80%;}
+  .row.me{align-self:flex-end;flex-direction:row-reverse;}
+  .bub{background:#f4f4f8;border-radius:8px;padding:7px 11px;font-size:12.5px;color:#222;line-height:1.55;}
+  .row.me .bub{background:var(--teams-soft);}
+  .who{font-size:10.5px;color:#999;margin:0 0 2px 2px;}
+  .composer{border-top:1px solid #ececf2;padding:10px 12px;}
+  .cbox{border:1px solid #d6d8e5;border-radius:8px;padding:8px 10px;min-height:40px;
+    color:#9aa;font-size:12.5px;display:flex;align-items:center;}
+  .ctools{display:flex;align-items:center;gap:14px;margin-top:7px;color:#666;font-size:15px;}
+  .ctools .send{margin-left:auto;width:30px;height:30px;border-radius:6px;background:var(--teams);
+    color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;}
+  .ctools .t{font-size:13px;font-weight:700;}
+  /* highlight + callout */
+  .hl{position:relative;outline:2.5px solid #f59e0b;outline-offset:1px;border-radius:8px;}
+  .tag{position:absolute;background:#f59e0b;color:#1a1206;font-weight:800;font-size:11px;
+    padding:2px 8px;border-radius:6px;white-space:nowrap;z-index:5;box-shadow:0 2px 6px rgba(0,0,0,.18);}
+  .pop{position:absolute;background:#fff;border:1px solid #e2e2ec;border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,.18);padding:7px 9px;display:flex;gap:6px;font-size:17px;z-index:6;}
+  .drop{border:1px solid #e2e2ec;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.15);
+    background:#fff;max-width:280px;margin:6px 0;overflow:hidden;}
+  .drop .di{display:flex;gap:9px;align-items:center;padding:8px 12px;font-size:12.5px;}
+  .drop .di.hot{background:#eef0fb;}
+
+  /* mobile screen mock */
+  .phone{width:230px;margin:0 auto;border:8px solid #1f2330;border-radius:30px;
+    overflow:hidden;box-shadow:var(--shadow);background:#fff;}
+  .phone .pbar{height:26px;background:var(--teams);}
+  .phone .ph-list .li{padding:11px 12px;}
+  .phone .ptab{display:flex;border-top:1px solid #eee;}
+  .phone .ptab div{flex:1;text-align:center;font-size:9px;color:#777;padding:7px 0;}
+  .phone .ptab div.on{color:var(--teams);font-weight:700;}
+
+  @media (max-width:640px){
+    .wrap{padding:20px 16px 80px;}
+    header{padding:24px 0 18px;}
+    section > p.sub{padding-left:0;}
+    .app{font-size:11px;min-height:0;}
+    .rail{flex:0 0 48px;}
+    .rail .ic{width:40px;}
+    .list{flex:0 0 130px;}
+    .li .pv{display:none;}
+    .av{flex-basis:26px;width:26px;height:26px;font-size:10px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Chat Guide</div>
+  <h1>Teams チャットの使い方</h1>
+  <p class="lead">Microsoft Teams の「チャット」で、社内のメンバーとメッセージをやり取りする方法を、画面イメージ付きで順番に解説します。</p>
+  <p class="meta">最終更新: 2026-06-01</p>
+</header>
+
+<div class="intro">
+  <h2>このマニュアルでできるようになること</h2>
+  <p>Teams の「チャット」は、メール よりも気軽に、Slack のように <b>短いメッセージをすばやくやり取り</b> できる機能です。1対1でも、複数人のグループでも使えます。</p>
+  <p>このページでは、<b>チャットを開く → 相手を選ぶ → メッセージを送る → ファイルや絵文字・メンションを使う → グループを作る</b> までを、Teams の画面イメージに沿って解説します。</p>
+</div>
+
+<nav class="toc">
+  <h2>目次</h2>
+  <ol>
+    <li><a href="#open">チャット画面を開く</a></li>
+    <li><a href="#new">新しいチャットを始める（相手を選ぶ）</a></li>
+    <li><a href="#send">メッセージを送る・改行する</a></li>
+    <li><a href="#deco">絵文字・装飾・GIF でにぎやかにする</a></li>
+    <li><a href="#react">リアクションと返信（引用）</a></li>
+    <li><a href="#file">ファイル・画像を送る</a></li>
+    <li><a href="#mention">メンション（@名前）で気づいてもらう</a></li>
+    <li><a href="#group">グループチャットを作る</a></li>
+    <li><a href="#tips">通知・ピン留め・スマホで使う</a></li>
+  </ol>
+</nav>
+
+<!-- 1. 開く -->
+<section id="open">
+  <h2><span class="num">1</span>チャット画面を開く</h2>
+  <p class="sub">まずは Teams の左側にある「チャット」を開きます。ここがメッセージのやり取りの入口です。</p>
+
+  <figure>
+    <div class="mock">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="title">Microsoft Teams</span></div>
+      <div class="app">
+        <div class="rail">
+          <div class="ic"><span class="g">🔔</span>アクティビティ</div>
+          <div class="ic on sel hl"><span class="g">💬</span>チャット<span class="tag" style="top:-10px;left:50px;">ここをクリック</span></div>
+          <div class="ic"><span class="g">👥</span>チーム</div>
+          <div class="ic"><span class="g">📅</span>カレンダー</div>
+          <div class="ic"><span class="g">📞</span>通話</div>
+        </div>
+        <div class="list">
+          <div class="lh">チャット <span class="new">✏️</span></div>
+          <div class="search">🔍 検索</div>
+          <div class="li sel"><span class="av a1">べ</span><div><div class="nm">ベステラ 太郎</div><div class="pv">了解しました！</div></div></div>
+          <div class="li"><span class="av a2">西</span><div><div class="nm">西日本 花子</div><div class="pv">明日の現場の件です</div></div></div>
+          <div class="li"><span class="av a3">工</span><div><div class="nm">工事部グループ</div><div class="pv">写真ありがとうございます</div></div></div>
+        </div>
+        <div class="conv">
+          <div class="ch"><span class="av sm a1">べ</span><span class="nm">ベステラ 太郎</span></div>
+          <div class="body">
+            <div class="row"><span class="av sm a1">べ</span><div><div class="who">ベステラ 太郎</div><div class="bub">中山さん、お疲れさまです。配属おめでとうございます！</div></div></div>
+            <div class="row me"><div class="bub">ありがとうございます。よろしくお願いします。</div></div>
+          </div>
+          <div class="composer"><div class="cbox">メッセージを入力</div></div>
+        </div>
+      </div>
+    </div>
+    <figcaption><span class="pin">画面1</span>左の縦長メニューにある <b>「チャット」（吹き出しアイコン）</b> をクリックすると、チャット画面が開きます。真ん中の列に <b>相手の一覧</b>、右側に <b>選んだ相手とのやり取り</b> が表示されます。</figcaption>
+  </figure>
+
+  <div class="note"><b>3つの列を覚えるだけ:</b> ① 左＝Teamsの機能切り替え　② 中央＝チャット相手の一覧　③ 右＝今ひらいている会話。この3列構成はずっと変わりません。</div>
+</section>
+
+<!-- 2. 新規チャット -->
+<section id="new">
+  <h2><span class="num">2</span>新しいチャットを始める（相手を選ぶ）</h2>
+  <p class="sub">まだ会話したことがない人に初めてメッセージを送るときは、「新しいチャット」から相手の名前を選びます。</p>
+
+  <figure>
+    <div class="mock">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="title">Microsoft Teams — 新しいチャット</span></div>
+      <div class="app">
+        <div class="rail">
+          <div class="ic"><span class="g">🔔</span>アクティビティ</div>
+          <div class="ic on sel"><span class="g">💬</span>チャット</div>
+          <div class="ic"><span class="g">👥</span>チーム</div>
+          <div class="ic"><span class="g">📅</span>カレンダー</div>
+        </div>
+        <div class="list">
+          <div class="lh">チャット <span class="new hl">✏️<span class="tag" style="top:-26px;right:-6px;">①ペンのマーク</span></span></div>
+          <div class="search">🔍 検索</div>
+          <div class="li"><span class="av a1">べ</span><div><div class="nm">ベステラ 太郎</div></div></div>
+          <div class="li"><span class="av a2">西</span><div><div class="nm">西日本 花子</div></div></div>
+        </div>
+        <div class="conv">
+          <div class="ch" style="gap:8px;">宛先：<div class="hl" style="flex:1;border:1px solid #d6d8e5;border-radius:6px;padding:6px 10px;color:#333;">なか<span style="color:#bbb;">｜</span><span class="tag" style="top:-26px;left:0;">②名前を入力</span></div></div>
+          <div class="body" style="padding-top:6px;">
+            <div class="drop" style="margin-top:2px;">
+              <div class="di hot"><span class="av sm a4">中</span><div><b>中川 一郎</b><div style="color:#999;font-size:10.5px;">工事部</div></div></div>
+              <div class="di"><span class="av sm a5">中</span><div><b>中村 さくら</b><div style="color:#999;font-size:10.5px;">管理部</div></div></div>
+            </div>
+            <div style="color:#aaa;font-size:11.5px;margin-top:8px;">③ 候補から相手をクリックして選ぶ</div>
+          </div>
+          <div class="composer"><div class="cbox">メッセージを入力</div></div>
+        </div>
+      </div>
+    </div>
+    <figcaption><span class="pin">画面2</span><b>① 中央上の「ペン（新しいチャット）」マーク</b> をクリック →<b>② 上の「宛先」欄に相手の名前</b>を入力 →<b>③ 表示された候補から相手を選ぶ</b>。あとはメッセージを打って送るだけです。</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>手順まとめ</h3>
+    <ol class="steps">
+      <li>チャット一覧の上にある <b>ペンのマーク（新しいチャット）</b> をクリック</li>
+      <li>一番上の <b>「宛先」欄</b> に、送りたい相手の <b>名前（漢字）</b> を入力</li>
+      <li>下に出てくる候補から <b>相手をクリック</b>して選ぶ（複数人選べばグループになります → <a href="#group">8章</a>）</li>
+      <li>下のメッセージ欄に文章を入れて送信</li>
+    </ol>
+    <div class="tip"><b>すでに会話したことがある人は:</b> 中央の一覧にその人が残っているので、クリックするだけで続きから話せます。新しいチャットを作り直す必要はありません。</div>
+  </div>
+</section>
+
+<!-- 3. 送る -->
+<section id="send">
+  <h2><span class="num">3</span>メッセージを送る・改行する</h2>
+  <p class="sub">下のメッセージ欄に文章を打ち、<kbd>Enter</kbd> キーで送信します。ここが Slack やメールと少し違うので注意です。</p>
+
+  <figure>
+    <div class="mock">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="title">Microsoft Teams</span></div>
+      <div class="app">
+        <div class="rail"><div class="ic on sel"><span class="g">💬</span>チャット</div></div>
+        <div class="conv" style="flex:1;">
+          <div class="ch"><span class="av sm a2">西</span><span class="nm">西日本 花子</span></div>
+          <div class="body">
+            <div class="row"><span class="av sm a2">西</span><div><div class="bub">中山さん、明日の現場は9時集合でお願いします。</div></div></div>
+            <div class="row me"><div class="bub">承知しました！</div></div>
+          </div>
+          <div class="composer">
+            <div class="cbox hl" style="color:#333;">9時に現場に向かいます<span style="color:#bbb;">｜</span><span class="tag" style="top:-26px;left:0;">①ここに入力</span></div>
+            <div class="ctools">
+              <span>😊</span><span>📎</span><span>GIF</span><span>＋</span>
+              <span class="send hl">➤<span class="tag" style="top:-30px;right:-8px;">②送信（Enter）</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <figcaption><span class="pin">画面3</span>下の <b>① メッセージ欄</b> に文章を入力し、<b>② 右下の送信ボタン</b>（または <kbd>Enter</kbd> キー）で送信します。</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>覚えておきたいキー操作</h3>
+    <ol class="steps">
+      <li><b><kbd>Enter</kbd> キー＝送信</b>。文章を打って Enter を押すと、その時点で送られます</li>
+      <li><b>改行したいとき＝<kbd>Shift</kbd>＋<kbd>Enter</kbd></b>。長い文章を途中で改行しても送信されません</li>
+      <li>送る前にもう一度読み返すと、送信ミスが減ります</li>
+    </ol>
+    <div class="tip"><b>よくある失敗:</b> 「改行のつもりで <kbd>Enter</kbd> を押したら、書きかけのまま送ってしまった」。改行は必ず <kbd>Shift</kbd>＋<kbd>Enter</kbd> です。</div>
+    <div class="note"><b>送ったメッセージは直せます:</b> 自分のメッセージにマウスを乗せ、出てくる「…」から <b>「編集」</b> や <b>「削除」</b> ができます。</div>
+  </div>
+</section>
+
+<!-- 4. 装飾 -->
+<section id="deco">
+  <h2><span class="num">4</span>絵文字・装飾・GIF でにぎやかにする</h2>
+  <p class="sub">文字を太くしたり、絵文字やGIFアニメを入れたりして、伝わりやすく・やわらかくできます。</p>
+
+  <figure>
+    <div class="mock">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="title">Microsoft Teams</span></div>
+      <div class="app">
+        <div class="rail"><div class="ic on sel"><span class="g">💬</span>チャット</div></div>
+        <div class="conv" style="flex:1;">
+          <div class="ch"><span class="av sm a1">べ</span><span class="nm">ベステラ 太郎</span></div>
+          <div class="body">
+            <div class="row me"><div class="bub">本日の作業、<b>無事完了</b>しました 👍✨</div></div>
+          </div>
+          <div class="composer">
+            <div class="cbox" style="color:#333;">おつかれさまでした</div>
+            <div class="ctools">
+              <span class="hl" style="border-radius:6px;padding:0 4px;">😊<span class="tag" style="top:-28px;left:-6px;">絵文字</span></span>
+              <span class="hl" style="border-radius:6px;padding:0 4px;">GIF<span class="tag" style="top:-28px;left:-2px;">GIFアニメ</span></span>
+              <span style="font-weight:700;">A</span>
+              <span class="hl" style="border-radius:6px;padding:0 4px;font-weight:800;">B<span class="tag" style="top:-28px;left:-4px;">太字</span></span>
+              <span class="send">➤</span>
+            </div>
+            <div class="pop" style="position:static;display:flex;margin-top:8px;flex-wrap:wrap;">😀 😁 👍 🙏 🎉 ✨ 😊 🙇 💪 🆗</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <figcaption><span class="pin">画面4</span>メッセージ欄の下に並ぶアイコンから、<b>絵文字（😊）・GIFアニメ（GIF）・文字装飾（A／B）</b> を呼び出せます。クリックすると一覧が開くので、選ぶだけです。</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>それぞれの使いどころ</h3>
+    <ol class="steps">
+      <li><b>絵文字 😊</b> — ひとことに表情を添えられます。「了解です👍」「ありがとうございます🙏」など</li>
+      <li><b>GIF</b> — 動く画像。お祝いやねぎらいの一言に。使いすぎは控えめに</li>
+      <li><b>文字装飾（A → B / I / 下線）</b> — <b>太字</b>で大事なところを強調したり、箇条書きにしたりできます</li>
+    </ol>
+    <div class="note"><b>業務の連絡では:</b> 絵文字は「ひとこと添える」くらいがちょうど良いです。日時・場所・数量などの大事な情報は、文字でしっかり書きましょう。</div>
+  </div>
+</section>
+
+<!-- 5. リアクション -->
+<section id="react">
+  <h2><span class="num">5</span>リアクションと返信（引用）</h2>
+  <p class="sub">わざわざ返信しなくても、相手のメッセージに「いいね」などのリアクションで反応できます。特定のメッセージに返信することもできます。</p>
+
+  <figure>
+    <div class="mock">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="title">Microsoft Teams</span></div>
+      <div class="app">
+        <div class="rail"><div class="ic on sel"><span class="g">💬</span>チャット</div></div>
+        <div class="conv" style="flex:1;">
+          <div class="ch"><span class="av sm a2">西</span><span class="nm">西日本 花子</span></div>
+          <div class="body" style="gap:18px;">
+            <div class="row" style="position:relative;">
+              <span class="av sm a2">西</span>
+              <div><div class="bub hl">本日の報告書、アップしておきました。ご確認ください。</div></div>
+              <div class="pop" style="top:-34px;left:34px;">👍 ❤️ 😄 😮 🙏</div>
+              <span class="tag" style="top:-50px;left:34px;">①メッセージに乗せると出る</span>
+            </div>
+            <div class="row me"><div class="bub">👍 確認します！</div></div>
+          </div>
+          <div class="composer"><div class="cbox">メッセージを入力</div></div>
+        </div>
+      </div>
+    </div>
+    <figcaption><span class="pin">画面5</span>相手のメッセージに <b>マウスを乗せる</b> と、上に <b>リアクションの絵文字（👍❤️😄…）</b> が出ます。クリックするだけで反応が伝わり、「見ました」の合図にもなります。</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>リアクションと返信の使い分け</h3>
+    <ol class="steps">
+      <li><b>リアクション（👍など）</b> — 「了解」「ありがとう」「見ました」を、文字を打たずにワンクリックで伝えたいとき</li>
+      <li><b>返信（引用）</b> — メッセージの「…」メニューから <b>「返信」</b> を選ぶと、どの発言への返事かを引用した形で返せます。会話が増えても話が混ざりません</li>
+    </ol>
+    <div class="tip"><b>おすすめ:</b> 一日に何度もやり取りする相手とは、いちいち「了解しました」と打たずに <b>👍 リアクション</b> で十分。お互い気楽になります。</div>
+  </div>
+</section>
+
+<!-- 6. ファイル -->
+<section id="file">
+  <h2><span class="num">6</span>ファイル・画像を送る</h2>
+  <p class="sub">現場写真や書類（PDF・Excel・Word など）も、チャットでそのまま送れます。</p>
+
+  <figure>
+    <div class="mock">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="title">Microsoft Teams</span></div>
+      <div class="app">
+        <div class="rail"><div class="ic on sel"><span class="g">💬</span>チャット</div></div>
+        <div class="conv" style="flex:1;">
+          <div class="ch"><span class="av sm a3">工</span><span class="nm">工事部グループ</span></div>
+          <div class="body">
+            <div class="row me">
+              <div class="bub" style="display:flex;gap:9px;align-items:center;">
+                <span style="width:30px;height:30px;border-radius:6px;background:#d34;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;">PDF</span>
+                <div><div style="font-weight:600;">現場報告_0601.pdf</div><div style="color:#888;font-size:10.5px;">1.2 MB</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="composer">
+            <div class="cbox">メッセージを入力</div>
+            <div class="ctools">
+              <span>😊</span>
+              <span class="hl" style="border-radius:6px;padding:0 4px;">📎<span class="tag" style="top:-28px;left:-10px;">クリップで添付</span></span>
+              <span>GIF</span><span>＋</span><span class="send">➤</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <figcaption><span class="pin">画面6</span>メッセージ欄の下にある <b>クリップのマーク（📎）</b> をクリックして、パソコンの中からファイルを選びます。送られたファイルは相手側でそのまま開けます。</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>2つの送り方</h3>
+    <ol class="steps">
+      <li><b>クリップ（📎）から選ぶ</b> — 📎 → <b>「このデバイスからアップロード」</b> → パソコンの中のファイルを選択</li>
+      <li><b>ドラッグ＆ドロップ</b> — エクスプローラーやデスクトップから、ファイルをチャット画面に <b>マウスでそのまま放り込む</b></li>
+    </ol>
+    <div class="note"><b>写真もそのまま送れます:</b> スマホの Teams アプリなら、カメラで撮ってその場で送れます（→ <a href="#tips">9章</a>）。</div>
+    <div class="tip"><b>大きすぎるファイルは:</b> 動画など容量が大きいものは、チャット添付より <b>Box</b> の共有リンクを貼るほうがスムーズなこともあります。</div>
+  </div>
+</section>
+
+<!-- 7. メンション -->
+<section id="mention">
+  <h2><span class="num">7</span>メンション（@名前）で気づいてもらう</h2>
+  <p class="sub">大人数のグループで「この人に確実に見てほしい」ときは、名前の前に <b>@（アットマーク）</b> を付けます。相手に通知が届きます。</p>
+
+  <figure>
+    <div class="mock">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="title">Microsoft Teams</span></div>
+      <div class="app">
+        <div class="rail"><div class="ic on sel"><span class="g">💬</span>チャット</div></div>
+        <div class="conv" style="flex:1;">
+          <div class="ch"><span class="av sm a3">工</span><span class="nm">工事部グループ</span></div>
+          <div class="body" style="padding-bottom:4px;">
+            <div class="row me"><div class="bub"><span style="color:var(--teams);font-weight:700;">@西日本 花子</span> 明日の段取り、ご確認お願いします！</div></div>
+          </div>
+          <div class="composer">
+            <div class="drop" style="margin-bottom:0;">
+              <div class="di hot"><span class="av sm a2">西</span><div><b>西日本 花子</b><div style="color:#999;font-size:10.5px;">工事部</div></div></div>
+              <div class="di"><span class="av sm a5">中</span><div><b>中村 さくら</b><div style="color:#999;font-size:10.5px;">管理部</div></div></div>
+            </div>
+            <div class="cbox hl" style="color:#333;">@西<span style="color:#bbb;">｜</span><span class="tag" style="top:-26px;left:0;">@に続けて名前を入力</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <figcaption><span class="pin">画面7</span>メッセージ欄で <b>@（半角アットマーク）</b> を打つと候補リストが出ます。<b>相手を選ぶと名前が色付き</b>で入り、その人に「あなた宛のメッセージ」として通知が届きます。</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>メンションの手順</h3>
+    <ol class="steps">
+      <li>メッセージ欄で <b>半角の <code>@</code></b> を入力</li>
+      <li>続けて相手の <b>名前</b> を打つと、候補が出てくる</li>
+      <li>候補から相手を <b>クリック</b>（名前が色付きになればOK）</li>
+      <li>そのまま用件を書いて送信</li>
+    </ol>
+    <div class="tip"><b>使いどころ:</b> 1対1のチャットでは不要です。<b>人数の多いグループ</b>で、特定の人に確実に届けたいときに使いましょう。</div>
+  </div>
+</section>
+
+<!-- 8. グループ -->
+<section id="group">
+  <h2><span class="num">8</span>グループチャットを作る</h2>
+  <p class="sub">複数人で同じ話題を共有したいときは、グループチャットが便利です。作り方は「新しいチャット」で相手を複数選ぶだけです。</p>
+
+  <figure>
+    <div class="mock">
+      <div class="mock-bar"><i></i><i></i><i></i><span class="title">Microsoft Teams — グループチャット</span></div>
+      <div class="app">
+        <div class="rail"><div class="ic on sel"><span class="g">💬</span>チャット</div></div>
+        <div class="conv" style="flex:1;">
+          <div class="ch" style="gap:8px;align-items:flex-start;flex-direction:column;">
+            <div style="display:flex;gap:8px;align-items:center;width:100%;">
+              <span style="font-size:12px;color:#666;">宛先：</span>
+              <span class="hl" style="background:var(--teams-soft);color:var(--teams);border-radius:14px;padding:2px 10px;font-size:11.5px;font-weight:600;">西日本 花子 ✕</span>
+              <span style="background:var(--teams-soft);color:var(--teams);border-radius:14px;padding:2px 10px;font-size:11.5px;font-weight:600;">ベステラ 太郎 ✕</span>
+              <span style="color:#bbb;">｜</span>
+              <span class="tag" style="position:static;">複数人を選ぶとグループに</span>
+            </div>
+          </div>
+          <div class="body">
+            <div style="text-align:center;color:#aaa;font-size:11px;">グループチャットが作成されました</div>
+            <div class="row me"><div class="bub">明日の現場、この3人で進めましょう！</div></div>
+          </div>
+          <div class="composer"><div class="cbox">メッセージを入力</div></div>
+        </div>
+      </div>
+    </div>
+    <figcaption><span class="pin">画面8</span><b>「新しいチャット」の宛先に2人以上を追加</b> すると、自動的にグループチャットになります。あとから人を増やすこともできます。</figcaption>
+  </figure>
+
+  <div class="card">
+    <h3>グループの便利な操作</h3>
+    <ol class="steps">
+      <li><b>名前を付ける</b> — 右上の鉛筆マークから「○○現場」などグループ名を付けると分かりやすい</li>
+      <li><b>人を追加する</b> — 右上の人型アイコンから、あとからメンバーを足せる</li>
+      <li><b>大事な人には @メンション</b> — 人数が多いので、特定の人へは <a href="#mention">@メンション</a>（7章）で</li>
+    </ol>
+    <div class="note"><b>「チーム」との違い:</b> Teams には「チャット」とは別に「チーム」という機能もありますが、まずは <b>チャット（この資料）</b> だけ覚えれば日々の連絡は十分です。</div>
+  </div>
+</section>
+
+<!-- 9. tips -->
+<section id="tips">
+  <h2><span class="num">9</span>通知・ピン留め・スマホで使う</h2>
+  <p class="sub">最後に、毎日の使い勝手が上がる小ワザと、スマホ（会社携帯）での使い方です。</p>
+
+  <div class="card">
+    <h3>知っておくと便利</h3>
+    <ol class="steps">
+      <li><b>未読の合図</b> — 左の「チャット」アイコンや、相手の名前に <b>赤いバッジ（数字）</b> が出たら新着メッセージです</li>
+      <li><b>よく使う相手をピン留め</b> — 一覧で相手を右クリック →「ピン留め」で、上に固定されて探しやすくなります</li>
+      <li><b>通知が多いと感じたら</b> — 相手を右クリック →「ミュート」で、その会話の通知を一時的に止められます</li>
+    </ol>
+  </div>
+
+  <figure>
+    <div class="phone">
+      <div class="pbar"></div>
+      <div class="ph-list" style="background:#fff;">
+        <div class="li"><span class="av sm a1">べ</span><div><div class="nm">ベステラ 太郎</div><div class="pv" style="max-width:120px;">了解しました！</div></div></div>
+        <div class="li"><span class="av sm a2">西</span><div><div class="nm">西日本 花子</div><div class="pv" style="max-width:120px;">明日9時集合です</div></div></div>
+        <div class="li"><span class="av sm a3">工</span><div><div class="nm">工事部グループ</div><div class="pv" style="max-width:120px;">写真ありがとう</div></div></div>
+      </div>
+      <div class="ptab">
+        <div>🔔<br>アクティビティ</div>
+        <div class="on">💬<br>チャット</div>
+        <div>👥<br>チーム</div>
+        <div>📅<br>予定表</div>
+      </div>
+    </div>
+    <figcaption><span class="pin">画面9</span>スマホの Teams アプリでも、画面下の <b>「チャット」タブ</b> から同じようにやり取りできます。外出先や現場からでも連絡が取れます。</figcaption>
+  </figure>
+
+  <div class="note"><b>会社携帯への入れ方:</b> Teams アプリのインストール（App Store / Google Play）と会議の使い方は、本編の Web会議マニュアルにまとめてあります（下のリンク）。</div>
+</section>
+
+<a class="cta" href="../">
+  <b>ベステラ Teams Web会議マニュアル（本編）へ</b>
+  <span>会議を「開く」「招く」「入る」、画面共有・録画、会社携帯への導入まで</span>
+</a>
+
+<div class="help">
+  <h2>うまくいかないとき</h2>
+  <p>長谷部までお気軽に Teams か Slack でご連絡ください。一緒に画面を見ながら解決します。</p>
+</div>
+
+<footer>
+  ベステラ株式会社 / Microsoft Teams チャットの使い方マニュアル<br>
+  ※画面はイメージです（実際のメンバー名・会話は含みません）。ご意見・改善要望は長谷部まで
+</footer>
+
+</div>
+</body>
+</html>
